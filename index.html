@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subhasree's Portfolio</title>
+  <!-- CSS coding -->
+  <style>
+    :root {
+      --primary: #a3c4f3;
+      --accent: #dbeafe;
+      --text: #000a0c;
+      --background: #B3EBF2;
+      --dark-bg: #1A2E40;
+      --dark-text: #080000;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', serif;
+      background-color: var(--background);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+    header {
+      background-color: var(--primary);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    #typingText{
+                font-size: 18px;
+                margin-top: 10px;
+            }
+            nav{
+                background: #e9efef;
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                padding:15px;
+                flex-wrap: wrap;
+            }
+            nav button{
+                background: azure;
+                border: 2px solid blanchedalmond;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor:pointer;
+                transition: background 0.3s;
+    }
+    nav button:hover {
+      background: #aa84e4;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      background-color: var(--accent);
+      padding: 0.5rem;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 1rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #2563eb;
+    }
+    main {
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: var(--accent);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      padding: 0;
+      list-style: none;
+    }
+    .skills-list li {
+      background-color: var(--primary);
+      padding: 0.5rem;
+      border-radius: 5px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .skills-list li:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--primary);
+    }
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    body.dark-mode header,
+    body.dark-mode nav ul,
+    body.dark-mode section,
+    body.dark-mode footer {
+      background-color: #50709d;
+      color: var(--dark-text);
+    }
+    body.dark-mode nav ul li a {
+      color: var(--dark-text);
+    }
+    body.dark-mode nav ul li a:hover {
+      color: #4c98ef;
+    }
+    #contact-form {
+  background-color: var(--accent);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: auto;
+}
+#contact-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #0f1013;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f7fcfc;
+  color: var(--text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  background-color: #f0f2f5;
+  color: var(--dark-text);
+  border: 1px solid #00050c;
+}
+.form-group label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #080000;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+  color: #2563eb;
+  background-color: var(--accent);
+  padding: 0 0.3rem;
+}
+#contact-form button {
+  width: 75%;
+  padding: 0.75rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#contact-form button:hover {
+  background-color: #60a5fa;
+  transform: scale(1.02);
+}
+#formStatus {
+  margin-top: 1rem;
+  font-style: italic;
+  color: green;
+  text-align: center;
+}
+.profile-photo {
+  width: 100px;   /* Adjust width */
+  height: 200px;  /* Adjust height */
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+  .hero-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .nav {
+    flex-direction: row;
+  }
+  .hero-text {
+    font-size: 2rem;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+  </style>
+  <!-- CSS coding for dark mode toggle -->
+
+  <meta charset="UTF-8">
+  <title>Dark Mode Toggle</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .toggle-container {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 9999; /* ensures it's above all other elements */
+    }
+    .toggle-button {
+      background-color: #f0f0f0;
+      color: #333;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dark-theme {
+      background-color: #121212;
+      color: #0d0101;
+    }
+    .dark-theme .toggle-button {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+
+    /* Optional: Prevent tabs or sections from overlapping */
+    .content {
+      padding-top: 80px; /* leaves space for the toggle button */
+    }
+  </style>
+  <div class="toggle-container">
+    <button class="toggle-button" onclick="toggleDarkMode()">🌗 DARK MODE</button>
+  </div>
+  <!-- JavaScript coding for dark mode toggle -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-theme');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #fdf6f0; /* soft pastel background */
+    }
+    .portfolio-title {
+      margin-top: 40px;
+      font-size: 2.5em;
+      color: #333;
+    }
+    .profile-photo {
+      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: 4px solid #d8cfc4;
+    }
+  </style>
+  <!-- HTML coding -->
+  <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>👩‍💻 Subhasree's Portfolio</h1>
+    <p id="typingText"></p>
+  </header>
+  <img src="./My photo.jpg" alt="Subhasree's Photo" class="profile-photo">
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#Education">Education</a></li>
+      <li><a href="#Certificate">Certificate</a></li>
+      <li><a href="#My Project Gallery">My Project Gallery</a></li>
+      <li><a href="#Resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p> I am Subhasree. I'm a dedicated web developer and passionate student with a strong foundation in front-end technologies and a growing interest in full-stack development. I thrive on learning, problem-solving, and building clean, user-friendly digital experiences.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>HTML</li>
+        <li>Cascading Style Sheets (CSS)</li>
+        <li>JavaScript (JS)</li>
+        <li>Web Development</li>
+        <li>Responsive Web Design</li>
+        <li>Web Publishing</li>
+        <li>Front End Development</li>
+      </ul>
+    </section>
+    <section id="Education">
+      <h2>Education</h2>
+      <p>Currently Pursuing II year Bachelor Degree in Computer Science.(B.Sc),
+         Pachaiyappa's College for Women, Kanchipuram.
+      </p>
+    </section>
+    <section id="Certificate">
+      <h2>Certificate</h2>
+      <p>My Certification in Front End Web Development from IBM SkillsBuild.</p>
+      <a href="./Completion Certificate .pdf" target="_blank">My Certificate</a></p>
+    </section>
+    <!-- CSS coding for Project Gallery toggles -->
+<meta charset="UTF-8">
+  <title>Project Gallery</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      text-align: center;
+      padding: 40px;
+    }
+    .gallery-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #080808;
+    }
+    .toggle-buttons {
+      margin-bottom: 30px;
+    }
+    .toggle-buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #020202;
+      color: #e8eaed;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-buttons button:hover {
+      background-color: #c2b8ae;
+    }
+    .project-image {
+      display: none;
+      margin-top: 20px;
+      max-width: 80%;
+      height: auto;
+      box-shadow: 0 4px 10px rgba(8, 177, 211, 0.2);
+      border-radius: 10px;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+<body>
+  <section id="My Project Gallery">
+  <h1 class="gallery-title">My Project Gallery</h1>
+  <h5>[Note: By Clicking on the respective project toggles you can view my project.]</h5>
+
+  <div class="toggle-buttons">
+    <button onclick="showProject('project1')">Project 1</button>
+    <button onclick="showProject('project2')">Project 2</button>
+    <button onclick="showProject('project3')">Project 3</button>
+    <button onclick="showProject('project4')">Project 4</button>
+    <button onclick="showProject('project5')">Project 5</button>
+  </div>
+
+  <img src="./simple html page.jpg" id="project1" class="project-image" alt="Project 1">
+  <img src="./Media page project ss.jpg" id="project2" class="project-image" alt="Project 2">
+  <img src="./Weather dashboard.jpg" id="project3" class="project-image" alt="Project 3">
+  <img src="./Timetable project ss.jpg" id="project4" class="project-image" alt="Project 4">
+  <img src="./ID project.jpg" id="project5" class="project-image" alt="Project 5">
+
+  <script>
+    function showProject(projectId) {
+      const images = document.querySelectorAll('.project-image');
+      images.forEach(img => img.classList.remove('active'));
+      document.getElementById(projectId).classList.add('active');
+    }
+  </script>
+</section>
+
+    <section id="contact-form">
+  <h2>Contact me by sending a message!</h2>
+  <form id="messageForm">
+    <div class="form-group">
+      <input type="text" id="name" name="name" required />
+      <label for="name">Name</label>
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" name="email" required />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-group">
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <label for="message">Message</label>
+    </div>
+
+    <button type="submit">Send Message</button>
+    <p id="formStatus"></p>
+  </form>
+</section>
+<section id="Resume">
+  <h2>Resume</h2>
+  <p>Download my CV: <a href="./resume.pdf" target="_blank">My Resume</a></p>
+</section>
+<section id="contact">
+      <h2>Other Contact Details</h2>
+      <p>Email: subhasreesivakumar17@gmail.com</p>
+       <p>Location: Kanchipuram, Tamilnadu.</p>
+      <p><a href="https://www.linkedin.com/in/subhasree-sivakumar-a03703309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">My LinkedIn</a></p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Subhasree. All rights reserved.</p>
+  </footer>
+  <script>
+  document.getElementById('messageForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (name && email && message) {
+    document.getElementById('formStatus').textContent = "✅ Message sent successfully!";
+    this.reset();
+  } else {
+    document.getElementById('formStatus').textContent = "⚠️ Please fill out all fields.";
+  }
+});
+</script>
+
+  <script>
+    // Typing animation
+    const text = "Student | Creative Web Developer | Designer ";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typingText").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    typeWriter();
+</script>
+</body>
+</html>
